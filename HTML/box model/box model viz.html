@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Layout Example</title>
+    <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+    .outer {
+      background-color: pink;
+      padding: 10px;
+    }
+    .inner {
+      background-color: red;
+      height: 20px;
+    }
+    #element-type div{
+       background-color:pink;
+    }
+    #element-type span{
+       background-color:lightblue;
+       height: 100px;
+    }
+    </style>
+
+  </head>
+  <body>
+    <section id="box-model">
+      <h2>Two type box model</h2>
+      <p>boder-box</p>
+      <div class="outer" style="width:40%;box-sizing:border-box;">
+        <div class="inner">
+        </div>
+      </div>
+
+      <p>content-box</p>
+      <!-- The + and - operators must be surrounded by whitespace.  -->
+      <div class="outer" style="width: calc(40% - 20px);">
+        <div class="inner">
+        </div>
+      </div>
+    </section>
+
+    <section id="element-type">
+      <h2>Two type element based pn layout rules.</h2>
+      <p>1.block level.<br> display : block、table、flex、grid and list-item.</p>
+      <div>By default, the width is 100% and height is 0. You can set width、padding、margin和border</div>
+      <p>2.inline-level. <br>display : inline, inline-block, inline-table, and inline-flex, inline-grid</p>
+      <div style="overflow:auto;">
+      <span>There can be many elements in one line, arranged from left to right.</span>
+      <span>You can't set width, height, margin-top and margin-bottom.</span>
+      <span>By default, the alignment is left(horizontally) and baseline(vertically).</span>
+      <span>The alignment is determined by the 'text-align' of the parent and 'vertical-align' of itself.</span>
+      <p>The space between each inline-level element is caused by the enter / space between them.<p>
+      </div>
+      <p>2-1. inline-block-level.
+      <span style="display:inline-block;">For the inline-block-level element, you can set aby size just like block level element. <br>However, by default, the width is 0. I set the height of span element as 100px, but it just affect the span here since I set display to inline-block;</span>
+    </section>
+
+    <section id="formatting-context">
+      <h2>Formatting Context has specific rules of layout.</h2>
+        <section id="bfc">
+        <p>BFC: block formatting context. There 4 main properties that can be used to create a BFC:<p>
+        <ul>
+          <li>float: not none</li>
+          <li>position: absolute or fixed</li>
+          <li>display: flex, grid, table-cell, table-caption</li>
+          <li>overflow: not visible</li>
+        </ul>
+        <p>There are 3 main rules</p>
+        <ol>
+          <li>Children elements' css style won't affect elements outside the BFC parent element.</li>
+          <li>Floating children elements are invloved in the calculation of the height of the parent.</li>
+          <li>BFC elements in the normal document flow can recognize floating, sibling elements.</li>
+        </ol>
+        <h3>Examples</h3>
+          <p>1. To prevent margion collapse</p>
+          <div style="height:50px;background-color:pink;">
+            <div style="margin: 10px;background-color:red;">This is a child in regular div.</div>
+          </div>
+          <p>The margin-top of the child in contained in the BFC parent.</p>
+          <div style="height:50px;background-color:pink;overflow:auto;">
+            <div style="margin: 10px;background-color:red;">This is a child in BFC div.</div>
+          </div>
+
+          <p>2. To contain floating</p>
+          <div style="background-color:pink;">
+            <div style="margin: 10px;background-color:red;float:left;">This is a floating child in regular div.</div>
+            <div style="margin: 10px;background-color:red;float:left;">This is a floating child in regular div.</div>
+            <div style="margin: 10px;background-color:red;float:left;">This is a floating child in regular div.</div>
+          <div style="margin: 10px;background-color:red;clear:left;">This is a clear floating div. You can see the margin-bottom is collapsed.</div>
+          </div>
+
+          <p>The parent div is not collapsed.</p>
+          <div style="background-color:pink;overflow:auto;">
+            <div style="margin: 10px;background-color:red;float:left;">This is a floating child in regular div.</div>
+            <div style="margin: 10px;background-color:red;float:left;">This is a floating child in regular div.</div>
+            <div style="margin: 10px;background-color:red;float:left;">This is a floating child in regular div.</div>
+          </div>
+
+          <p>3. To recognize floating sibling.</p>
+          <div style="height:60px;background-color:pink;">
+            <div style="width:100px;background-color:lightblue;float:left;">This is a child in regular div.</div>
+            <div style="background-color:red;width:300px;">This is a child in regular div.This is a child in regular div.This is a child in regular div.</div>
+          </div>
+          <p>The floating element is not wrapped.</p>
+          <div style="height:60px;background-color:pink;">
+            <div style="width:100px;background-color:lightblue;float:left;">This is a child in regular div.</div>
+            <div style="background-color:red;overflow:auto;width:300px;">This is a child in regular div.This is a child in regular div.This is a child in regular div.</div>
+          </div>
+          <p>4. set width to auto make the BFC child take up the rest of the line.</p>
+          <div style="height:60px;background-color:pink;">
+            <div style="width:100px;background-color:lightblue;float:left;">This is a child in regular div.</div>
+            <div style="background-color:red;overflow:auto;width:auto;">This is a child in regular div.This is a child in regular div.This is a child in regular div.</div>
+          </div>
+        </section>
+
+        <section id="ifc">
+          <p>IFC: Inline Formatting Context is created implicitly when the psrent box contains text or inline-level element. There are multiple lines in the parent box, which is called line box.</p>
+        <section>
+
+
+    </section>
+  </body>
+</html>

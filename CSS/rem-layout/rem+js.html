@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>rem——rem+js</title>
+    <style>
+        html {
+            font-size: 32px; /* 320/10 */
+        }
+        body {
+            font-size: 16px; /* set the real font size */
+            /* --- limit the width of body on large screen--- */
+            margin: auto;
+            padding: 0;
+            width: 10rem;
+            /* -----------*/
+            outline: 1px dashed green;
+        }
+
+        /* ---mimic the js code effect is javascript is disabled--- */
+        @media screen and (min-width: 320px) {
+            html {font-size: 32px}
+            body {font-size: 16px;}
+        }
+        @media screen and (min-width: 481px) and (max-width:640px) {
+            html {font-size: 48px}
+            body {font-size: 18px;}
+        }
+        @media screen and (min-width: 641px) {
+            html {font-size: 64px}
+            body {font-size: 20px;}
+        }
+
+        noscript {
+            display: block;
+            border: 1px solid #d6e9c6;
+            padding: 3px 5px;
+            background: #dff0d8;
+            color: #3c763d;
+        }
+        /* ------- */
+
+        /* font size is relative to body's font size, em */
+        /* width and height is relative to the root font size, rem */
+        .p1, .p2 {
+            border: 1px solid red;
+            margin: 10px 0;
+        }
+
+        .p1 {
+            width: 5rem;
+            height: 5rem;
+            font-size: 1.2em;
+        }
+
+        .s1 {
+            font-size: 1.2em;
+            background-color: lightgrey;
+        }
+
+        .p2 {
+            width: 4rem;
+            height: 4rem;
+        }
+        .s2 {
+            font-size: 1.2em;
+            background-color: lightgrey;
+        }
+    </style>
+</head>
+<body>
+    <noscript>javascript is disabled</noscript>
+
+    <div class="p1">
+        The width is 50% of the screen，the font size is 1.2em relative to body's font size
+        <div class="s1">
+            The font size is 1.2em relative to parent's font size
+        </div>
+    </div>
+
+    <div class="p2">
+        The width is 40% of the screen，the font size is body's font size
+        <div class="s2">
+            The font size is 1.2em relative to parent's font size
+        </div>
+    </div>
+
+    <script>
+        var documentElement = document.documentElement;
+
+        function callback() {
+            var clientWidth = documentElement.clientWidth;
+            // the font size is fixed when screen is larger than 780px
+            clientWidth = clientWidth < 780 ? clientWidth : 780;
+            documentElement.style.fontSize = clientWidth / 10 + 'px';
+        }
+
+        document.addEventListener('DOMContentLoaded', callback);
+
+        //detect screen size change both on phone and desktop browser
+        window.addEventListener('orientationchange' in window ? 'orientationchange' : 'resize', callback);
+    </script>
+
+</body>
+</html>

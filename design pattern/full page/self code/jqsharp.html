@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>fullPage-jquery</title>
+    <style type="text/css">
+
+        html,body {
+          height:100%;
+        }
+
+        body,ul,li,a,p,div {
+          padding:0px;
+          margin:0px;
+          font-size:14px;
+        }
+
+        #container {
+            overflow: hidden;
+            width:100%;
+        }
+
+        #main{
+            top:0;
+            position: relative;
+        }
+
+
+        .page {
+            width:100%;
+            margin:0;
+            transition: opacity 1s ease-out;
+        }
+
+       /* div.show {
+         opacity: 1;
+       } */
+
+        #page1 {
+          background-image: url(./spring.jpg);
+          background-size: cover;
+          background-color:#E4E6CE;
+
+        }
+
+        #page2 {
+          background-image: url(./summer.jpg);
+          background-size: cover;
+          background-color:#6CE26C;
+        }
+
+        #page3 {
+          background-image: url(./fall.jpg);
+          background-size: cover;
+          background-color:#BF4938;
+        }
+
+        #page4 {
+          background-image: url(./winter.jpg);
+          background-size: cover;
+          background-color:#2932E1;
+        }
+
+        #control {
+          position: fixed;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 5px;
+          z-index: 2;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .circle {
+          width: 10px;
+          height: 10px;
+          border-radius: 10px;
+          background-color: white;
+          margin: 6px;
+          transition: transform 0.5s ease-out;
+        }
+        .large {
+          transform: scale(1.3);
+        }
+
+    </style>
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="main">
+          <div id="page1" class="page"></div>
+          <div id="page2" class="page"></div>
+          <div id="page3" class="page"></div>
+          <div id="page4" class="page"></div>
+      </div>
+      <div id="control">
+        <div id="circle0" class="circle large"><a href="#page1"></a></div>
+        <div id="circle1" class="circle"><a href="#page2"></a></div>
+        <div id="circle2" class="circle"><a href="#page3"></a></div>
+        <div id="circle3" class="circle"><a href="#page4"></a></div>
+      </div>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="./jquery.mousewheel.min.js"></script>
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+      $("#circle0"+" a")[0].click();
+      var clientHeight = $( window ).height();
+      $("#container").height(clientHeight);
+      $( "div" ).each(function( i ) {
+        if(this.className === 'page'){
+             $(this).height(clientHeight);
+           }
+      });
+
+      //time is used control the minimun gap between the page animation
+      var startTime = 0, //scrolling start
+          endTime = 0,
+          currentOffSetTop = 0;
+
+      //Browser compatibility is dealt with by the mousewheel plugin https://github.com/jquery/jquery-mousewheel
+      $(document).on('mousewheel', scrollFun);
+
+
+
+      function scrollFun(event){
+          startTime = new Date().getTime();
+          //deltaY is negative: scroll wheel up, i.e scrollong the page down
+          var delta = -event.deltaY;
+
+          if ((endTime - startTime) < -1000){
+
+              var offsetTop=$("#main").offset().top;
+              console.log('off',offsetTop);
+
+              //scrollng page down and not at the last page
+              if(delta>0 && parseInt(offsetTop) > -(clientHeight*3)){
+                  var currentPage=-offsetTop/clientHeight;
+                  $("#circle"+currentPage).removeClass( "large" );
+                  $("#circle"+(currentPage+1)).addClass("large");
+                  $("#page"+(currentPage+1)).css('opacity',0);
+                  function delay(){
+                    $("#circle"+(currentPage+1)+" a")[0].click();
+                  }
+                  setTimeout(delay,500);
+
+              }
+
+              //scrollng page up and not at the first page
+              if(delta<0 && parseInt(offsetTop) < 0){
+                  var currentPage=-offsetTop/clientHeight;
+                  $("#circle"+currentPage).removeClass( "large" );
+                  $("#circle"+(currentPage-1)).addClass("large");
+
+                  $("#page"+(currentPage)).css('opacity',1);
+                  $("#page"+currentPage-1).css('opacity',0);
+
+                  function delay(){
+                    $("#circle"+(currentPage-1)+" a")[0].click();
+                  }
+                  setTimeout(delay,500);
+
+              }
+
+              endTime = new Date().getTime();
+          }else{
+              event.preventDefault(); // prevent scrolling if two scrolling happens within 1 second
+          }
+      }
+
+    });
+
+
+</script>
+  </body>
+</html>

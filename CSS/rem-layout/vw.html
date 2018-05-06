@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>rem——vw</title>
+    <style>
+        /* font-size */
+        @media screen and (min-width: 320px) {
+            body {font-size: 1rem;}
+        }
+        @media screen and (min-width: 481px) and (max-width:640px) {
+            body {font-size: 1.1rem;}
+        }
+        @media screen and (min-width: 641px) {
+            body {font-size: 1.2rem;}
+        }
+
+
+        .p1, .p2 {
+            border: 1px solid red;
+            margin: 10px 20px;
+        }
+
+        .p1 {
+            width: 50vw;
+            height: 50vh;
+            font-size: 1.2em;
+        }
+
+        .s1 {
+            font-size: 1.2em;
+            background-color: lightgrey;
+        }
+
+        .p2 {
+            width: 40vw;
+            height: 40vh;
+        }
+
+        .s2 {
+            font-size: 1.2em;
+            background-color: lightgrey;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="p1">
+        The width is 50% of the screen，the font size is 1.2em relative to body's font size
+        <div class="s1">
+            The font size is 1.2em relative to parent's font size
+        </div>
+    </div>
+
+    <div class="p2">
+        The width is 40% of the screen，the font size is body's font size
+        <div class="s2">
+            The font size is 1.2em relative to parent's font size
+        </div>
+    </div>
+</body>
+</html>

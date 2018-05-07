@@ -259,3 +259,24 @@ To create a transition effect, you must specify two things:
 Shades of gray are often defined by setting the hue and saturation to 0, and adjust the lightness from 0% to 100% to get darker/lighter shades: hsl(0, 0%, 0%)
 
 
+## some tricks
+1. max-width: 500px, scroll bar will not appear when screen size is smaller than 500px
+ https://www.w3schools.com/css/css_max-width.asp
+
+2.  For W3C compliant CSS: If you define the color property, you must also define the background-color
+
+3. Add icons
+https://www.w3schools.com/css/css_icons.asp
+Link + use classes
+
+4. Align
+https://www.w3schools.com/css/css_align.asp
+
+
+5. Attribute selector
+https://www.w3schools.com/css/css_attribute_selectors.asp
+
+
+6. Card:
+https://www.w3schools.com/css/tryit.asp?filename=trycss3_box-shadow5
+

@@ -34,6 +34,13 @@ div {
 }
 ```
 
+6. When using the shorthand property the order of the property values is:
+	•	background-color
+	•	background-image
+	•	background-repeat
+	•	background-attachment
+	•	background-position
+
 ## float
 1. Essentially, the float property allows us to take an element, remove it from the normal flow of a page, and position it to the left or right of its parent element.
 

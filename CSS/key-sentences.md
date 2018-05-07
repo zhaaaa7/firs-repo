@@ -194,14 +194,8 @@ background-color: #f2f2f2;
 ```
 <div style="overflow-x:auto;">
 ```
+
+
   
   
-## responsive design
-1. One of the recommended viewport values is outlined below, using both the width and initial-scale properties.<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-2. One quick way to make media scalable is by using the max-width property with a value of 100%. (https://learn.shayhowe.com/advanced-html-css/responsive-web-design/S)
-
-
-
-1. The translate value works a bit like that of relative positioning, pushing and pulling an element in different directions without interrupting the normal flow of the document.
-2. for a transition to take place, an element must have a change in state, and different styles must be identified for each state.

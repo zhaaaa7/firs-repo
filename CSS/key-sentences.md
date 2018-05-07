@@ -227,7 +227,27 @@ For example, it can be used to:
 ## opacity
 1. When using the opacity property to add transparency to the background of an element, **all of its child elements inherit the same transparency**. This can make the text inside a fully transparent element hard to read.
   
-  
 
-1. The translate value works a bit like that of relative positioning, pushing and pulling an element in different directions without interrupting the normal flow of the document.
+## transition
+1. How to Use CSS Transitions?
+To create a transition effect, you must specify two things:
+* the CSS property you want to add an effect to
+* the duration of the effect
+
 2. for a transition to take place, an element must have a change in state, and different styles must be identified for each state.
+
+
+
+
+## translate
+1. The translate value works a bit like that of relative positioning, pushing and pulling an element in different directions without interrupting the normal flow of the document.
+
+## outline
+1. outline: An outline is a line that is drawn around elements, OUTSIDE the borders, to make the element "stand out”.
+
+## Color:
+1. Shades of gray are often defined using equal values for all the 3 light sources: #787878, #f0f0f0
+
+Shades of gray are often defined by setting the hue and saturation to 0, and adjust the lightness from 0% to 100% to get darker/lighter shades: hsl(0, 0%, 0%)
+
+

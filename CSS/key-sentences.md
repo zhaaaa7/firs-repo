@@ -75,7 +75,9 @@ The most common way to use the clear property is after you have used a float�
 ## display
 1. Setting the display property of an element only changes how the element is displayed, **NOT what kind of element it is. So, an inline element with display: block; is not allowed to have other block elements inside it.**
 
-2. element with ```display: none```; does not take up any space 
+2. element with `display: none`; does not take up any space 
+
+`visibility:hidden`; also hides an element. However, the element will still take up the same space as before. The element will be hidden, but still affect the layout
 
 3. inline-block elements are displayed on the same line as one another, they **include a single space between them**. The first solution is to put each new <section> element’s opening tag on the same line as the previous <section> element’s closing tag. Another way to remove the white space between inline-block elements is to open an HTML comment directly after an inline-block element’s closing tag.
   
@@ -195,7 +197,37 @@ background-color: #f2f2f2;
 <div style="overflow-x:auto;">
 ```
 
+## pseudo-*
+1. A pseudo-class is used to define a special **state** of an element.
+For example, it can be used to:
+* Style an element when a user mouses over it
+* Style visited and unvisited links differently
+* Style an element when it gets focus
 
+2. A CSS pseudo-element is used to style specified **parts** of an element.
+For example, it can be used to:
+* Style the first letter, or line, of an element
+* Insert content before, or after, the content of an element
+
+3. 
+```
+::selection {
+    color: red; 
+    background: yellow;
+}
+```
+
+## text-*
+1. The text-align property is used to set the horizontal alignment of a text. When the text-align property is set to "justify", each line is stretched so that every line has equal width, and the left and right margins are straight (like in magazines and newspapers)
+2. text-decoration 
+3. text-transform 
+4. text-indent 
+5. text-shadow
+
+## opacity
+1. When using the opacity property to add transparency to the background of an element, **all of its child elements inherit the same transparency**. This can make the text inside a fully transparent element hard to read.
   
   
 
+1. The translate value works a bit like that of relative positioning, pushing and pulling an element in different directions without interrupting the normal flow of the document.
+2. for a transition to take place, an element must have a change in state, and different styles must be identified for each state.

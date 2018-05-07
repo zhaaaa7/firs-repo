@@ -1,3 +1,12 @@
+## rule
+* Place the opening bracket on the same line as the selector
+* Use one space before the opening bracket
+* Use two spaces of indentation
+* Use semicolon after each property-value pair, including the last
+* Only use quotes around values if the value contains spaces
+* Place the closing bracket on a new line, without leading spaces
+* Avoid lines over 80 characters
+
 ## Cascading Order
 What style will be used when there is more than one style specified for an HTML element?
 

@@ -249,6 +249,28 @@ https://www.w3schools.com/html/tryit.asp?filename=tryhtml_iframe_target
 ```
 <noscript>Sorry, your browser does not support JavaScript!</noscript>
  ```
+ 
+## canvas
+The HTML `<canvas>` element is used to **draw graphics, on the fly, via JavaScript**.
+The `<canvas>` element is only a **container** for graphics. You must use JavaScript to actually draw the graphics.
+
+
+## SVG
+* SVG stands for Scalable Vector Graphics
+* SVG is used to define graphics for the Web
+* SVG is a W3C recommendation
+
+1. The HTML <svg> element is a container for SVG graphics.
+2. SVG has several methods for drawing paths, boxes, circles, text, and graphic images.
+
+3. Differences Between SVG and Canvas
+* SVG is a language for describing 2D graphics in XML.
+* Canvas draws 2D graphics, on the fly (with a JavaScript).
+* SVG is XML based, which means that every element is available within the SVG DOM. **You can attach JavaScript event handlers for an element.**
+
+* In SVG, each drawn shape is remembered as an object. If attributes of an SVG object are changed, the browser can automatically re-render the shape.
+
+* Canvas is rendered pixel by pixel. **In canvas, once the graphic is drawn, it is forgotten by the browser**. If its position should be changed, the entire scene needs to be redrawn, including any objects that might have been covered by the graphic.
 
 ## accessibility
 1. The language is declared with the lang attribute. Declaring a language is important for accessibility applications (screen readers) and search engines: `<html lang=“en-US”> `

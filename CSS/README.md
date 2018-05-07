@@ -11,3 +11,11 @@ css
 7. collection: http://codingheroes.io/resources/
 8. course: https://www.udemy.com/advanced-css-and-sass/learn/v4/overview
 9. glyphs: https://css-tricks.com/snippets/html/glyphs/
+10 gradient generator : https://www.cssmatic.com/gradient-generator, http://www.colorzilla.com/gradient-editor/
+
+
+
+### myth of css
+
+1. `* {}` target all the elements directly
+`body {}` uses inheritance

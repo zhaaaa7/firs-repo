@@ -14,15 +14,15 @@ To ensure proper interpretation, and correct search engine indexing, both the la
   <title>HTML5 Syntax and Coding Style</title>
 </head>
 ```
-2. The <meta> element is used to specify which character set is used, page description, keywords, author, and other metadata.
+2. The `<meta>` element is used to specify which character set is used, page description, keywords, author, and other metadata.
 
 Metadata is used by browsers (how to display content), by search engines (keywords), and other web services.
 
 3. Setting The Viewport
-HTML5 introduced a method to let web designers take control over the viewport, through the <meta> tag.
+HTML5 introduced a method to let web designers take control over the viewport, through the` <meta>` tag.
 **The viewport is the user's visible area of a web page**. It varies with the device, and will be smaller on a mobile phone than on a computer screen.
 
-You should include the following <meta> viewport element in all your web pages:
+You should include the following `<meta>` viewport element in all your web pages:
 ```
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
@@ -31,7 +31,7 @@ The `width=device-width` part sets the width of the page to follow the screen-wi
 `The initial-scale=1.0` part sets the initial zoom level when the page is first loaded by the browser.
 
 
-4. The <!DOCTYPE> declaration is not case sensitive.
+4. The `<!DOCTYPE>` declaration is not case sensitive.
 5. Element content can  be element or plain text
 6. HTML elements with no content are called empty elements.
   
@@ -47,7 +47,7 @@ The `width=device-width` part sets the width of the page to follow the screen-wi
 
 9. CSS can be added to HTML elements in 3 ways:
 *	Inline - by using the style attribute in HTML elements
-*	Internal - by using a <style> element in the <head> section
+*	Internal - by using a `<style>` element in the `<head>` section
 *	External - by using an external CSS file
   
 ## attribute
@@ -57,21 +57,21 @@ The `width=device-width` part sets the width of the page to follow the screen-wi
 The style attribute is used to specify the styling of an element, like color, font, size etc. 
 
 ## Formatting elements:
-* <b> - Bold text
-*	<strong> - Important text
-*	<i> - Italic text
-*	<em> - Emphasized text
-*	<mark> - Marked text: highlighted
-*	<small> - Small text
-*	<del> - Deleted text
-*	<ins> - Inserted text
-*	<sub> - Subscript text
-*	<sup> - Superscript text
+* ` <b>` - Bold text
+* `<strong>` - Important text
+* `<i>` - Italic text
+* `<em>` - Emphasized text
+* `<mark>` - Marked text: highlighted
+* `<small>` - Small text
+* `<del>` - Deleted text
+* `<ins>` - Inserted text
+* `<sub>` - Subscript text
+* `<sup>` - Superscript text
   
 ## tags
   
 ### p
-title attribute is added to the <p> element. The value of the title attribute will be displayed as a tooltip when you mouse over the paragraph: <p title="I'm a tooltip”> 
+title attribute is added to the `<p>` element. The value of the title attribute will be displayed as a tooltip when you mouse over the paragraph: `<p title="I'm a tooltip”> `
 
 ### hr
 The <hr> tag defines a **thematic break** in an HTML page, and is most often displayed as a horizontal rule. The <hr> element is used to separate content (or define a change) in an HTML page:

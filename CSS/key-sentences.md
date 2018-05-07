@@ -153,8 +153,7 @@ When using the shorthand property, the order of the property values are:
 * list-style-image (specifies an image as the list item marker)
 If one of the property values above are missing, the default value for the missing property will be inserted, if any.
 
-## iframe
-1. One additional fallback option that could be used in place of a plain text fallback is to use a YouTube or Vimeo embedded video. These video hosting websites allow us to upload our videos, provide a standard video player, and enable us to embed our videos onto a page using an **inline frame**.
+
 
 ## figure
 1. The <figure> block-level element is used to identify and wrap self-contained content, often in the form of media. It may surround images, audio clips, videos, blocks of code, diagrams, illustrations, or other self-contained media.

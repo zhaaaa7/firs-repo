@@ -20,12 +20,12 @@ https://modernizr.com/
 4. pattern attribute: http://www.html5pattern.com/
 
 
-### HTML
+#### HTML
 1. heading: https://yoast.com/headings-use/
             https://webdesign.tutsplus.com/articles/the-truth-about-multiple-h1-tags-in-the-html5-era--webdesign-16824
             
             
-### responsive design
+#### responsive design
 1. fonts: https://www.sitepoint.com/understanding-responsive-web-design-how-to-manage-fonts/
           https://www.futurehosting.com/blog/web-design-basics-rem-vs-em-vs-px-sizing-elements-in-css/
           https://mayvendev.com/blog/whats-the-deal-with-em-and-rem
@@ -36,10 +36,10 @@ https://modernizr.com/
 ## resources
 devTool: https://www.codeschool.com/courses/discover-devtools
 
-### HTML
+#### HTML
 1. wireframe: http://www.wireframeshowcase.com/
 
-### css
+#### css
 1. svg : https://icomoon.io/
 2. color inspiration : https://www.design-seeds.com/blog/
 3. tech icon svg: http://konpa.github.io/devicon/

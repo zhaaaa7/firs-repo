@@ -31,6 +31,7 @@ https://modernizr.com/
           https://mayvendev.com/blog/whats-the-deal-with-em-and-rem
           https://css-tricks.com/rems-ems/
 2. example: https://www.awwwards.com/50-examples-of-responsive-web-design.html
+3. viewport unit: https://css-tricks.com/fun-viewport-units/
 
           
 ## resources

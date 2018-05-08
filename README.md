@@ -11,3 +11,7 @@ codepen: https://codepen.io/zhaaaa7/
 
 ## feature detection
 https://modernizr.com/
+
+
+## resources
+1. https://learn.shayhowe.com/advanced-html-css/

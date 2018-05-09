@@ -1,5 +1,5 @@
 ## what is % relative to?
-*****
+
 
 ### position:
 1. static: not applied
@@ -15,4 +15,15 @@
 
 ### background
 1. background-size: relative to self's width and height
-2. background-position: relative to self's height - background images' height, self's width - background images' width. To be specific
+2. background-position: relative to self's height - background images' height, self's width - background images' width. To be specific, `background-position: center center` ===`background-position:50% 50%`.
+
+
+### transform
+1. translate()：relative to self
+2. scale()：relative to self
+
+
+### font
+1. font-size：relative to parent's box's font-size
+2. line-height：relative to current font size
+3. text-indent：relative to parent's width

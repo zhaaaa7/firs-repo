@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+ <head>
+   <title>Lottery</title>
+   <meta charset="utf-8">
+   <style>
+      * {
+        margin:0;
+        padding:0;
+      }
+
+      .title{
+        width:400px;
+        height:70px;
+        margin:0 auto;
+        padding-top:30px;
+        text-align:center;
+        font-size:24px;
+        font-weight:bold;
+        color:#F00;
+      }
+
+      .btns{
+        width:190px;
+        height:30px;
+        margin:0 auto;
+      }
+
+      .btns span {
+        display:block;
+        float:left;
+        width:80px;
+        height:27px;
+        line-height:27px;
+        background:#036;
+        border:1px solid #eee;
+        border-radius:7px;
+        margin-right:10px;
+        color:#FFF;
+        text-align:center;
+        font-size:14px;
+        cursor:pointer;
+      }
+   
+   </style>
+   <script type="text/javascript" src="js/script.js"></script>
+ </head>
+ <body>
+    <div id="title" class="title">Get your award!</div>
+    <div class="btns">
+       <span id="play">Start</span>
+       <span id="stop">Stop</span>
+    </div>
+    <script>
+        var data=['iPhone5','iPad air 2','Samsang Galaxy','window phone','google phone','thanks for participating'],
+        timer=null,
+        flag=0;
+
+        window.onload=function(){
+
+          // mouse event
+          var play=document.getElementById('play'),
+              stop=document.getElementById('stop');
+          play.onclick=playFun;
+          stop.onclick=stopFun;
+
+          // keyboard event
+          document.onkeyup=function(event){
+              event = event || window.event;
+              if(event.keyCode==13){
+                if(flag==0){
+                  playFun();
+                  flag=1;
+                }else{
+                  stopFun();
+                  flag=0;
+                }
+              }
+          }
+        }
+
+        function playFun(){
+          var title=document.getElementById('title');
+          var play=document.getElementById('play');
+          clearInterval(timer);
+          timer=setInterval(function(){
+            var random=Math.floor(Math.random()*data.length);
+            title.innerHTML=data[random];
+          },50);
+            play.style.background='#999';
+        }
+
+        function stopFun(){
+          clearInterval(timer);
+          var play=document.getElementById('play');
+          play.style.background='#036';
+        }
+    </script>
+ </body>
+</html>

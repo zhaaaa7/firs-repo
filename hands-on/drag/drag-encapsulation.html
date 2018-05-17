@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Draggable</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    #target {
+	width: 350px;
+	height: 50px;
+	background-color: orange;
+	cursor: move;
+}
+
+    </style>
+</head>
+<body>
+    <div id="target"></div>
+
+    <script>
+    var drag=(function(){
+        function getTransform() {
+            var transform = '',
+                divStyle = document.createElement('div').style,
+                transformArr = ['transform', 'webkitTransform', 'MozTransform', 'msTransform', 'OTransform'],
+                len = transformArr.length;
+            for(var i=0; i < len; i++)  {
+                if(transformArr[i] in divStyle) {
+                    return transformArr[i];
+                }
+            }
+            return transform;
+        }
+
+        var transform = getTransform();
+
+        function Drag(selector){
+            this.elem = typeof selector == 'Object' ? selector : document.getElementById(selector);
+            this.startX = 0;
+            this.startY = 0;
+            this.sourceX = 0;
+            this.sourceY = 0;
+
+            this.init();
+        }
+
+        Drag.prototype={
+            constructor: Drag,
+
+            init: function(){
+                this.setDrag();
+            },
+
+            getStyle: function(property) {
+                // IE compatibility
+                return document.defaultView.getComputedStyle ? document.defaultView.getComputedStyle(this.elem, false)[property] : this.elem.currentStyle[property];
+            },
+
+            getPosition: function(){
+                    if(this.getStyle(this.elem, 'position') == 'static') {
+                        this.elem.style.position = 'relative';
+                    }
+                    var rect = this.elem.getBoundingClientRect();
+                    // console.log("elem.getBoundingClientRect(): \n" + "x: " + rect.left + "\ny: " + rect.top);
+                    return pos = {
+                        x: rect.left,
+                        y: rect.top
+                    }
+            },
+
+            setPosition: function(pos){
+                    if(transform) {
+                        this.elem.style[transform] = 'translate('+ pos.x +'px, '+ pos.y +'px)';
+                    } else {
+                        this.elem.style.left = pos.x + 'px';
+                        this.elem.style.top = pos.y + 'px';
+                    }
+            },
+
+            setDrag: function(){
+                var self=this;
+                self.elem.addEventListener('mousedown', start, false);
+                function start(event) {
+                    self.startX = event.pageX;
+                    self.startY = event.pageY;
+
+                    var pos = self.getPosition();
+
+                    self.sourceX = pos.x;
+                    self.sourceY = pos.y;
+
+                    document.addEventListener('mousemove', move, false);
+                    document.addEventListener('mouseup', end, false);
+                }
+
+                function move(event) {
+                    var currentX = event.pageX;
+                    var currentY = event.pageY;
+
+                    var distanceX = currentX - self.startX;
+                    var distanceY = currentY - self.startY;
+
+                    self.setPosition({
+                        x: (self.sourceX + distanceX).toFixed(),
+                        y: (self.sourceY + distanceY).toFixed()
+                    })
+                }
+
+                function end(event) {
+                    document.removeEventListener('mousemove', move);
+                    document.removeEventListener('mouseup', end);
+                    
+                }
+
+            }        
+
+        };
+        
+        return { drag: Drag };
+
+    })();
+
+    var Drag=drag.drag;   
+    var drag1=new Drag('target');  
+
+    </script>
+</body>
+</html>

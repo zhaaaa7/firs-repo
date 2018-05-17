@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Draggable</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    #target {
+	width: 350px;
+	height: 50px;
+	background-color: orange;
+	cursor: move;
+}
+
+    </style>
+</head>
+<body>
+    <div id="target"></div>
+
+    <script>
+        var oElem = document.getElementById('target');
+
+        var startX = 0;
+        var startY = 0;
+
+        var sourceX = 0;
+        var sourceY = 0;
+
+        oElem.addEventListener('mousedown', start, false);
+
+        function start(event) {
+            startX = event.pageX;
+            startY = event.pageY;
+
+            var pos = getTargetPos(oElem);
+
+            sourceX = pos.x;
+            sourceY = pos.y;
+
+            console.log(startX,startY,sourceX,sourceY);
+            document.addEventListener('mousemove', move, false);
+            document.addEventListener('mouseup', end, false);
+        }
+
+        function move(event) {
+            var currentX = event.pageX;
+            var currentY = event.pageY;
+
+            var distanceX = currentX - startX;
+            var distanceY = currentY - startY;
+
+            setTargetPos(oElem, {
+                x: (sourceX + distanceX).toFixed(),
+                y: (sourceY + distanceY).toFixed()
+            })
+        }
+
+        function end(event) {
+            document.removeEventListener('mousemove', move);
+            document.removeEventListener('mouseup', end);
+            // do other things
+        }
+
+
+        function getStyle(elem, property) {
+            // IE compatibility
+            return document.defaultView.getComputedStyle ? document.defaultView.getComputedStyle(elem, false)[property] : elem.currentStyle[property];
+        }
+
+        function getTransform() {
+            var transform = '',
+                divStyle = document.createElement('div').style,
+                transformArr = ['transform', 'webkitTransform', 'MozTransform', 'msTransform', 'OTransform'],
+                len = transformArr.length;
+
+            for(var i=0; i < len; i++)  {
+                if(transformArr[i] in divStyle) {
+                    return transformArr[i];
+                }
+            }
+
+            return transform;
+        }
+
+
+        function getTargetPos(elem) {
+            if(getStyle(elem, 'position') == 'static') {
+                    elem.style.position = 'relative';
+                }
+            console.log(elem);
+            var rect = elem.getBoundingClientRect();
+
+            console.log("elem.getBoundingClientRect(): \n" + "x: " + rect.left + "\ny: " + rect.top);
+            return pos = {
+                x: rect.left,
+                y: rect.top
+            }
+            
+        }
+
+        function setTargetPos(elem, pos) {
+            var transform = getTransform();
+            if(transform) {
+                elem.style[transform] = 'translate('+ pos.x +'px, '+ pos.y +'px)';
+            } else {
+                elem.style.left = pos.x + 'px';
+                elem.style.top = pos.y + 'px';
+            }
+            return elem;
+        }
+
+        </script>
+</body>
+</html>

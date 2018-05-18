@@ -1,0 +1,127 @@
+﻿  .loginPanel {
+            width: 180px;
+            height: 100px;
+            margin: 30px;
+            background: #f6f6f6;
+            border-radius: 10px;
+            box-shadow: 0 0 8px #000;
+        }
+
+        .bottomDiv {
+            padding-top: 40px;
+            margin-left: 60px;
+        }
+
+        .login-state-trigger {
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            height: 16px;      
+            width: 120px;
+            margin: 4px 0 0 0;
+        }
+
+
+        .login-state-down {
+            background: url("../images/ptlogin.png") no-repeat scroll 0 -22px transparent;
+            height: 6px;
+            margin-top: 5px;
+            overflow: hidden;
+            text-indent: -999em;
+            width: 7px;
+        }
+
+        .login-state-show {
+            height: 14px;
+            overflow: hidden;
+            text-indent: -999em;
+            width: 14px;
+            margin: 1px 4px 0 0;
+        }
+
+        .login-state-txt {
+            float: left;
+            margin-left: 5px;
+            font-size: 12px;
+            line-height:18px!important;
+        }
+
+        .login-state .callme {
+            background: url("../images/ptlogin.png") -72px 0 no-repeat;
+        }
+
+        .login-state .online {
+            background: url("../images/ptlogin.png") 0 0 no-repeat;
+        }
+
+        .login-state .away {
+            background: url("../images/ptlogin.png") -18px 0 no-repeat;
+        }
+
+        .login-state .busy {
+            background: url("../images/ptlogin.png") -36px 0 no-repeat;
+        }
+
+        .login-state .silent {
+            background: url("../images/ptlogin.png") -108px 0 no-repeat;
+        }
+
+        .login-state .hidden {
+            background: url("../images/ptlogin.png") -54px 0 no-repeat;
+        }
+
+        .statePanel {
+            display: none;
+            position: absolute;
+            left: -8px;
+            top: 0;
+            z-index: 10;
+            margin: 0;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #ccc #6a6a6a #666 #cdcdcd;
+            padding: 0;
+            width: 100px;
+            height: 133px;
+            overflow: hidden;
+            background: white;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .statePanel .statePanel_li {
+            display: block;
+            float: left;
+            margin: 0;
+            padding: 3px 0;
+            width: 100px;
+            height: 16px;
+            line-height: 16px;
+            overflow: hidden;
+            zoom: 1;
+            cursor: pointer;
+        }
+
+        .stateSelect_icon {
+            float: left;
+            margin: 2px 0 0 5px;
+            width: 14px;
+            height: 14px;
+            overflow: hidden;
+        }
+
+        .stateSelect_text {
+            margin: 0 0 0 22px;
+        }
+
+        
+
+        .ui_boxyClose{
+            width:28px;
+            height:28px;
+            position:absolute;
+            top:-10px;
+            right:-10px;
+            cursor:pointer;
+            background:url('../images/boxy_btn.png') no-repeat;z-index:1
+        }

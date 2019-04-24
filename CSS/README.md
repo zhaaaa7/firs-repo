@@ -19,3 +19,9 @@ css
 document.getElementById('component').style.setProperty('--text-color','#fff');
 ```
 
+3. ways of set an element invisible
+* display: none。
+* input:   type="hidden"
+* width=0, height=0;
+* visibility:hidden
+* opacity: 0

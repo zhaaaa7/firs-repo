@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        body {
+            padding: 100px;
+        }
+
+        #box {
+            width: 150px;
+            height: 100px;
+            background: cornflowerblue;
+            border: 5px solid blueviolet;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script type="text/javascript">
+        window.onload = function () {
+            var oBox = document.getElementById('box');
+            var a = 0; b = 0;
+
+            oBox.onmousedown = function (ev) {
+                var oEvent = ev || event;
+                var X = oEvent.clientX;
+                var Y = oEvent.clientY;
+                var oBoxW = oBox.offsetWidth;
+                var oBoxH = oBox.offsetHeight;
+                var oBoxL = oBox.offsetLeft;
+
+                if (X < (oBox.offsetLeft + 5)) {
+                    a = 'left';
+                } else if (X > (oBox.offsetLeft + oBox.offsetWidth - 5)) {
+                    a = 'right';
+                }
+                if (Y < (oBox.offsetTop + 5)) {
+                    a = 'top';
+                } else if (Y > (oBox.offsetTop + oBoxH - 5)) {
+                    a = 'bottom';
+                }
+                document.onmousemove = function (ev) {
+                    var oEvent = ev || event;
+                    var XX = oEvent.clientX;
+                    var YY = oEvent.clientY;
+
+                    if (a == 'right') {
+                        oBox.style.width = oBoxW + (XX - X) + 'px';
+                    }
+                    else if (a == 'left') {
+                        oBox.style.width = oBoxW + (X - XX) + 'px';
+                        oBox.style.left = XX - X + oBoxL - 5 + 'px';
+                    }
+                    if (a == 'top') {
+                        oBox.style.height = oBoxH + (Y - YY) + 'px';
+                        oBox.style.top = YY + 'px';
+                    }
+                    else if (a == 'bottom') {
+                        oBox.style.height = oBoxH + (YY - Y) + 'px';
+                    }
+                };
+                document.onmouseup = function () {
+                    document.onmousedown = null;
+                    document.onmousemove = null;
+                };
+
+            };
+
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Drag</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <div id="block1"></div>
+    <img id="dog" src="https://www.animalfriendsrescue.org/available/thumb/dog_johnny.jpg" alt="dog" />
+    <script>
+        var images1 = document.getElementById("dog");;
+        var divId;
+        var v_left;
+        var v_top;
+        window.onload = function () {
+            divId = document.getElementById("block1");
+            var height1 = images1.height;//图片的高度
+            var width1 = images1.width;//图片的宽度
+            v_left = (document.body.clientWidth - width1) / 2;
+            v_top = (document.body.clientHeight - height1) / 2;
+            divId.style.left = v_left;
+            divId.style.top = v_top;
+        }
+        drag = 0;
+        move = 0;
+        // 拖拽对象
+        var ie = document.all;
+        var nn6 = document.getElementById && !document.all;
+        var isdrag = false;
+        var y, x;
+        var oDragObj;
+        function moveMouse(e) {
+            if (isdrag) {
+                oDragObj.style.top = (nn6 ? nTY + e.clientY - y : nTY + event.clientY - y) + "px";
+                oDragObj.style.left = (nn6 ? nTX + e.clientX - x : nTX + event.clientX - x) + "px";
+                return false;
+            }
+        }
+        // 拖拽方法
+        function initDrag(e) {
+            var oDragHandle = nn6 ? e.target : event.srcElement;
+            var topElement = "HTML";
+            while (oDragHandle.tagName != topElement && oDragHandle.className != "dragAble") {
+                oDragHandle = nn6 ? oDragHandle.parentNode : oDragHandle.parentElement;
+            }
+            if (oDragHandle.className == "dragAble") {
+                isdrag = true;
+                oDragObj = oDragHandle;
+                nTY = parseInt(oDragObj.style.top + 0);
+                y = nn6 ? e.clientY : event.clientY;
+                nTX = parseInt(oDragObj.style.left + 0);
+                x = nn6 ? e.clientX : event.clientX;
+                document.onmousemove = moveMouse;
+                //document.onmouseup=MUp;// 事件会在鼠标按键被松开时发生
+                return false;
+            }
+        }
+        document.onmousedown = initDrag;
+        document.onmouseup = new Function("isdrag=false");
+        //上下左右移动
+        function clickMove(s) {
+            if (s == "up") {
+                dragObj.style.top = parseInt(dragObj.style.top) + 100;
+            } else {
+                if (s == "down") {
+                    dragObj.style.top = parseInt(dragObj.style.top) - 100;
+                } else {
+                    if (s == "left") {
+                        dragObj.style.left = parseInt(dragObj.style.left) + 100;
+                    } else {
+                        if (s == "right") {
+                            dragObj.style.left = parseInt(dragObj.style.left) - 100;
+                        }
+                    }
+                }
+            }
+        }
+        //缩小倍数
+        function smallit() {
+            //将图片缩小，失去热点
+            height1 = images1.height;
+            width1 = images1.width;
+            images1.height = height1 / 1.1;
+            images1.width = width1 / 1.1;
+        }
+        //放大倍数
+        function bigit() {
+            /*//将图片放大，不失热点
+            var zoom = parseInt(images1.style.zoom, 10) || 100;
+            zoom += event.wheelDelta / 12;
+            if (zoom > 0) {
+            images1.style.zoom = (zoom+10) + "%";
+            }*/
+            //将图片放大，失去热点
+            height1 = images1.height;
+            width1 = images1.width;
+            images1.height = height1 * 1.1;
+            images1.width = width1 * 1.1;
+        }
+        //还原
+        function realsize() {
+            images1.style.zoom = 100 + "%";
+            images1.height = images2.height;
+            images1.width = images2.width;
+            divId.style.left = v_left;
+            divId.style.top = v_top;
+        }
+        function featsize() {
+            var width1 = images2.width;
+            var height1 = images2.height;
+            var width2 = 360;
+            var height2 = 200;
+            var h = height1 / height2;
+            var w = width1 / width2;
+            if (height1 < height2 && width1 < width2) {
+                images1.height = height1;
+                images1.width = width1;
+            } else {
+                if (h > w) {
+                    images1.height = height2;
+                    images1.width = width1 * height2 / height1;
+                } else {
+                    images1.width = width2;
+                    images1.height = height1 * width2 / width1;
+                }
+            }
+            block1.style.left = 0;
+            block1.style.top = 0;
+        }
+        //鼠标滚轮放大缩小
+        function bbimg(o) {
+            /*var eleLeft;
+            var eleTop;
+            if(document.documentElement){
+            eleLeft = document.documentElement.scrollLeft;
+            eleTop = document.documentElement.scrollTop;
+            }
+            else{
+            eleLeft = document.body.scrollLeft;
+            eleTop = document.body.scrollTop;
+            }
+            v_left+=eleLeft;
+            v_top+=eleTop;
+            //divId.style.left=v_left;
+            //divId.style.top=v_top;
+            alert(document.documentElement.scrollTop +"----xxx"+document.body.scrollTop+window.pageyoffset);*/
+            var zoom = parseInt(o.style.zoom, 10) || 100;
+            zoom += event.wheelDelta / 12;
+            if (zoom > 0) {
+                o.style.zoom = zoom + "%";
+            }
+            return false;
+        }
+    </script>
+</body>
+
+</html>

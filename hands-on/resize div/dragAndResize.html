@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>resize and drag</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #box {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background-size: contain;
+            background-image: url(./IDEO.jpg);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <img src="https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg" />
+
+    <script>
+        const box = document.getElementById('box');
+
+        box.onmousemove = function (e) {
+            const box = document.getElementById('box');
+
+            let { right, bottom, width, height } = box.getBoundingClientRect();
+
+            let mousex = e.clientX;
+            let mousey = e.clientY;
+
+            if (mousex > right - parseInt(width / 8) && mousey > bottom - parseInt(height / 8)) {
+                box.style.cursor = 'se-resize';
+            } else {
+                box.style.cursor = 'auto';
+
+            }
+        };
+
+        box.onmousedown = function (e) {
+            const box = document.getElementById('box');
+            let mousex = e.clientX;
+            let mousey = e.clientY;
+            let operation;
+
+            let { right, bottom } = box.getBoundingClientRect();
+
+            let left = box.offsetLeft;
+            let top = box.offsetTop;
+            let width = box.offsetWidth;
+            let height = box.offsetHeight;
+
+            if (mousex > right - parseInt(width / 8) && mousey > bottom - parseInt(width / 8)) {
+                operation = 'resize';
+            } else {
+                operation = 'drag';
+            }
+
+            document.onmousemove = function (e) {
+                let newmousex = e.clientX;
+                let newmousey = e.clientY;
+
+                let distance = newmousex - mousex + width;
+                if (operation === 'resize') {
+                    box.style.width = distance + 'px';
+                    box.style.height = distance + 'px';
+                } else {
+                    box.style.top = top + newmousey - mousey + 'px';
+                    box.style.left = left + newmousex - mousex + 'px';
+                }
+            };
+
+            document.onmouseup = function () {
+                document.onmousedown = null;
+                document.onmousemove = null;
+            };
+        };
+    </script>
+</body>
+
+</html>

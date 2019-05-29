@@ -53,6 +53,9 @@ devTool: https://www.codeschool.com/courses/discover-devtools
 
 emoji code: https://emojipedia.org/black-scissors/
 
+https://www.ruanyifeng.com/blog/2017/04/emoji.html
+
+
 10. gradient generator : https://www.cssmatic.com/gradient-generator, http://www.colorzilla.com/gradient-editor/
 11. css generator: http://css3generator.com/
 12. Browser capability: https://caniuse.com

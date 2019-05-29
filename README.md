@@ -50,6 +50,9 @@ devTool: https://www.codeschool.com/courses/discover-devtools
 7. collection: http://codingheroes.io/resources/
 8. course: https://www.udemy.com/advanced-css-and-sass/learn/v4/overview
 9. glyphs: https://css-tricks.com/snippets/html/glyphs/
+
+emoji code: https://emojipedia.org/black-scissors/
+
 10. gradient generator : https://www.cssmatic.com/gradient-generator, http://www.colorzilla.com/gradient-editor/
 11. css generator: http://css3generator.com/
 12. Browser capability: https://caniuse.com
